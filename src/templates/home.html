@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+<title>{%block head_title %}
+  {{page_title }} -- {{ block.super }}
+{% endblock head_title %}</title>
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+<p>Hello again</p>
+{{request.user}}
+{{request.method}}
+{{request.user.is_authenticated}}
+
+{% include 'snippets/welcome-user-msg.html'%}
+{% endblock content%}

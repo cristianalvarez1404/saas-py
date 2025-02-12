@@ -8,8 +8,8 @@ this_dir = pathlib.Path(__file__).resolve().parent
 def home_page_view(request,*args,**kwargs):
     qs = PageVisit.objects.all()
     page_qs = PageVisit.objects.filter(path=request.path)
-
     my_title = "My page"
+    html_template = "home.html"
     
     my_context = {
         "page_title": my_title,
@@ -17,7 +17,6 @@ def home_page_view(request,*args,**kwargs):
         "total_visit_count":qs.count()
     }
 
-    html_template = "home.html"
     PageVisit.objects.create(path=request.path)
     
     return render(request,html_template,context=my_context)

@@ -1,3 +1,6 @@
 Django>=5.0,<5.2
 gunicorn
 python-decouple
+psycogp[binary]
+dj-database-url
+requests

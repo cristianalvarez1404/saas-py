@@ -21,6 +21,8 @@ def home_view(request,*args,**kwargs):
     PageVisit.objects.create(path=request.path)
     
     return render(request,html_template,context=my_context) """
+    if request.user.is_authenticated:
+        print(request.user.is_authenticated,request.user,request.user.first_name)
     return render(request,*args,**kwargs)
 
 

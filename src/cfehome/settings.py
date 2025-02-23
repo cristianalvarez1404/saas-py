@@ -67,6 +67,14 @@ INSTALLED_APPS = [
     # my-apps
     'commando',
     'visits',
+
+    # third-party-apps
+    'allauth_ui',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'widget_tweaks',
+    'allauth.socialaccount.providers.github',
 ]
 
 MIDDLEWARE = [
@@ -78,13 +86,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'cfehome.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django.template.backends.django.    ',
         'DIRS': [BASE_DIR/"templates", BASE_DIR / "cfehome"],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -143,6 +153,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Django Allauth config
+LOGIN_REDIRECT_URL="/"
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_VERIFICATION="mandatory"
+ACCOUNT_EMAIL_SUBJECT_PREFIX="[CFE]"
+ACCOUNT_EMAIL_REQUIRED=True
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+ 
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

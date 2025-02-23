@@ -29,4 +29,8 @@ def register_view(request):
         #Django Forms
         #user_exists = User.objects.filter(username__iexact=username).exists()
         #email_exists = User.objects.filter(email__iexact=password).exists()
+        try:
+            User.objects.create_user(username=username,email=email,password=password)
+        except:
+            pass
     return render(request,"auth/register.html")
